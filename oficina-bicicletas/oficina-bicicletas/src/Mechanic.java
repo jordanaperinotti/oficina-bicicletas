@@ -1,16 +1,16 @@
 public class Mechanic extends Person {
 
-    private String registrationNumber;
+    private String badge;
     private double salary;
 
-    public Mechanic(String name, String phone, String registrationNumber, double salary) {
+    public Mechanic(String name, String phone, String badge, double salary) {
         super(name, phone);
-        this.registrationNumber = registrationNumber;
+        this.badge = badge;
         this.salary = salary;
     }
 
-    public String getRegistrationNumber() {
-        return registrationNumber;
+    public String getBadge() {
+        return badge;
     }
 
     public double getSalary() {

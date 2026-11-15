@@ -154,7 +154,7 @@ public class App {
         for (int i = 0; i < mechanics.size(); i++) {
             Mechanic mechanic = mechanics.get(i);
             System.out.println((i + 1) + ". " + mechanic.getName()
-                    + " | Matricula: " + mechanic.getRegistrationNumber());
+                    + " | Matricula: " + mechanic.getBadge());
         }
     }
 
