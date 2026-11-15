@@ -1,0 +1,26 @@
+# Arquivos compilados
+bin/
+out/
+*.class
+
+# Pacotes Java
+*.jar
+*.war
+*.ear
+
+# Logs
+*.log
+hs_err_pid*
+
+# IDEs
+.vscode/
+.idea/
+*.iml
+.classpath
+.project
+.settings/
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
+desktop.ini

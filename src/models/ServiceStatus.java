@@ -1,3 +1,5 @@
+package models;
+
 public enum ServiceStatus {
     OPEN("Aberta"),
     IN_PROGRESS("Em andamento"),

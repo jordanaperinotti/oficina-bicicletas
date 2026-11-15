@@ -1,5 +1,9 @@
+package models;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
+
+import interfaces.Calculable;
 
 public class ServiceOrder implements Calculable {
 

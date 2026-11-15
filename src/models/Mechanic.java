@@ -1,3 +1,5 @@
+package models;
+
 public class Mechanic extends Person {
 
     private String badge;

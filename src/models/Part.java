@@ -1,3 +1,5 @@
+package models;
+
 public class Part {
 
     private String description;
