@@ -1,10 +1,10 @@
 # Oficina de Bicicletas
 
-Aplicacao Java inicial para cadastro de clientes, mecânicos e bicicletas, bem como abertura e consulta de ordens de servico. Nesta fase inicial da implementação, os dados ficam em memória durante a execução. Posteriormente, com o andamento do projeto os dados serão armazenados em arquivo.
+Aplicação Java inicial para cadastro de clientes, mecânicos e bicicletas, bem como abertura e consulta de ordens de serviço. Nesta fase inicial da implementação, os dados ficam em memória durante a execução. Posteriormente, com o andamento do projeto os dados serão armazenados em arquivo.
 
 ## Modelagem proposta (inicial)
 
-### Heranca
+### Herança
 
 ```text
              Person (abstrata)
@@ -12,7 +12,7 @@ Aplicacao Java inicial para cadastro de clientes, mecânicos e bicicletas, bem c
          Customer      Mechanic
 ```
 
-`Person` concentra os dados comuns (nome e telefone). `Customer` acrescenta CPF e endereco; `Mechanic` acrescenta matrícula e salário.
+`Person` concentra os dados comuns (nome e telefone). `Customer` acrescenta CPF e endereço; `Mechanic` acrescenta matrícula e salário.
 
 ### Associações e responsabilidades
 
@@ -20,15 +20,15 @@ Aplicacao Java inicial para cadastro de clientes, mecânicos e bicicletas, bem c
 - Uma `ServiceOrder` registra a bicicleta atendida, o mecânico responsável, a descrição, as datas, o status, a mão de obra e as peças utilizadas.
 - `ServiceStatus` enumera os estados iniciais: `OPEN`, `IN_PROGRESS`, `WAITING_FOR_PART`, `UNDER_REVIEW_AND_TESTING`, `WAITING_FOR_PICKUP` e `COMPLETED`.
 - `Part` representa um item e sua quantidade na ordem de serviço.
-- `Calculable` e implementada por `ServiceOrder`, que calcula mão de obra mais o valor das pecas.
-- `Model` e `History` serão extraidas/adicionadas em uma próxima etapa. Por enquanto, a bicicleta guarda marca e modelo como textos e a ordem de serviço ainda não persiste um histórico de alterações.
+- `Calculable` é implementada por `ServiceOrder`, que calcula mão de obra mais o valor das peças.
+- `Model` e `History` serão extraídas/adicionadas em uma próxima etapa. Por enquanto, a bicicleta guarda marca e modelo como textos e a ordem de serviço ainda não persiste um histórico de alterações.
 
 ### Regras previstas para evolução
 
 - O prazo inicial da ordem é de cinco dias a partir da abertura.
 - Se for necessário solicitar uma peça ao revendedor, a ordem deve passar para `WAITING_FOR_PART` e a previsão deve ser atualizada.
-- A atribuição automática deve priorizar o mecânico que atendeu anteriormente a bicicleta, caso esteja disponível; caso contrario, deve escolher um mecânico livre.
-- A disponibilidade dos mecânicos, o histórico, a extensao do prazo por espera de peças e a persistência dos dados ainda precisam ser implementados.
+- A atribuição automática deve priorizar o mecânico que atendeu anteriormente a bicicleta, caso esteja disponível; caso contrário, deve escolher um mecânico livre.
+- A disponibilidade dos mecânicos, o histórico, a extensão do prazo por espera de peças e a persistência dos dados ainda precisam ser implementados.
 
 ## O que já funciona
 
