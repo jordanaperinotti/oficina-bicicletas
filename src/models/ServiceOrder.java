@@ -32,14 +32,23 @@ public class ServiceOrder implements Calculable {
     }
 
     public void addService(Service service) {
+        if (service == null) {
+            throw new IllegalArgumentException("Servico nao pode ser nulo.");
+        }
         services.add(service);
     }
 
     public void addPart(Part part) {
+        if (part == null) {
+            throw new IllegalArgumentException("Peca nao pode ser nula.");
+        }
         parts.add(part);
     }
 
     public void addPayment(Payment payment) {
+        if (payment == null) {
+            throw new IllegalArgumentException("Pagamento nao pode ser nulo.");
+        }
         if (payment.getAmount() > getRemainingBalance()) {
             throw new IllegalArgumentException("Pagamento excede o saldo restante de R$ "
                     + getRemainingBalance() + ".");
