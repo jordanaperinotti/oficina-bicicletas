@@ -6,6 +6,7 @@ import java.util.Scanner;
 import models.Bicycle;
 import models.Customer;
 import models.Mechanic;
+import models.Service;
 import models.ServiceOrder;
 
 public class MenuView {
@@ -112,12 +113,28 @@ public class MenuView {
         }
 
         System.out.println("\n--- Nova ordem de servico ---");
-        String description = readText("Descricao do servico: ");
+        String description = readText("Descricao da ordem: ");
         Bicycle bicycle = selectBicycle();
         Mechanic mechanic = selectMechanic();
-        double laborCost = readDouble("Valor da mao de obra: ");
         int orderNumber = serviceOrders.size() + 1;
-        serviceOrders.add(new ServiceOrder(orderNumber, description, bicycle, mechanic, laborCost));
+        ServiceOrder serviceOrder = new ServiceOrder(orderNumber, description, bicycle, mechanic);
+
+        System.out.println("Adicione os servicos (descricao vazia para encerrar).");
+        while (true) {
+            String serviceDescription = readText("Descricao do servico: ");
+            if (serviceDescription.isEmpty()) {
+                if (serviceOrder.getServices().isEmpty()) {
+                    System.out.println("Informe ao menos um servico.");
+                    continue;
+                }
+                break;
+            }
+            double laborCost = readNonNegativeDouble("Valor da mao de obra: ");
+            serviceOrder.addService(new Service(serviceDescription, laborCost));
+        }
+
+        serviceOrders.add(serviceOrder);
+        bicycle.getServiceHistory().addServiceOrder(serviceOrder);
         System.out.println("Ordem de servico " + orderNumber + " aberta. Prazo inicial: 5 dias.");
     }
 
@@ -220,6 +237,16 @@ public class MenuView {
             } catch (NumberFormatException error) {
                 System.out.println("Digite um valor numerico valido.");
             }
+        }
+    }
+
+    private static double readNonNegativeDouble(String message) {
+        while (true) {
+            double value = readDouble(message);
+            if (value >= 0) {
+                return value;
+            }
+            System.out.println("O valor nao pode ser negativo.");
         }
     }
 

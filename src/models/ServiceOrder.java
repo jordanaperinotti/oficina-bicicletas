@@ -14,33 +14,58 @@ public class ServiceOrder implements Calculable {
     private ServiceStatus status;
     private LocalDate openingDate;
     private LocalDate estimatedDeliveryDate;
-    private double laborCost;
+    private ArrayList<Service> services;
     private ArrayList<Part> parts;
+    private ArrayList<Payment> payments;
 
-    public ServiceOrder(int number, String description, Bicycle bicycle,
-            Mechanic mechanic, double laborCost) {
+    public ServiceOrder(int number, String description, Bicycle bicycle, Mechanic mechanic) {
         this.number = number;
         this.description = description;
         this.bicycle = bicycle;
         this.mechanic = mechanic;
-        this.laborCost = laborCost;
         this.status = ServiceStatus.OPEN;
         this.openingDate = LocalDate.now();
         this.estimatedDeliveryDate = openingDate.plusDays(5);
+        this.services = new ArrayList<>();
         this.parts = new ArrayList<>();
+        this.payments = new ArrayList<>();
+    }
+
+    public void addService(Service service) {
+        services.add(service);
     }
 
     public void addPart(Part part) {
         parts.add(part);
     }
 
+    public void addPayment(Payment payment) {
+        if (payment.getAmount() > getRemainingBalance()) {
+            throw new IllegalArgumentException("Pagamento excede o saldo restante de R$ "
+                    + getRemainingBalance() + ".");
+        }
+        payments.add(payment);
+    }
+
     @Override
     public double calculateTotal() {
-        double total = laborCost;
+        double total = getLaborCost();
         for (Part part : parts) {
             total += part.getUnitPrice() * part.getQuantity();
         }
         return total;
+    }
+
+    public double getAmountPaid() {
+        double paid = 0;
+        for (Payment payment : payments) {
+            paid += payment.getAmount();
+        }
+        return paid;
+    }
+
+    public double getRemainingBalance() {
+        return calculateTotal() - getAmountPaid();
     }
 
     public int getNumber() {
@@ -72,10 +97,22 @@ public class ServiceOrder implements Calculable {
     }
 
     public double getLaborCost() {
+        double laborCost = 0;
+        for (Service service : services) {
+            laborCost += service.getLaborCost();
+        }
         return laborCost;
+    }
+
+    public ArrayList<Service> getServices() {
+        return new ArrayList<>(services);
     }
 
     public ArrayList<Part> getParts() {
         return new ArrayList<>(parts);
+    }
+
+    public ArrayList<Payment> getPayments() {
+        return new ArrayList<>(payments);
     }
 }
