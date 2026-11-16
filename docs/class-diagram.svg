@@ -1,0 +1,277 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg viewBox="0 0 1580 920" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="class-diagram-title class-diagram-desc" id="class-diagram-root">
+        <title id="class-diagram-title">Oficina de Bicicletas · diagrama de classes</title>
+        <desc id="class-diagram-desc">Modelo de domínio da oficina: ServiceOrder implementa Calculable e compõe serviços, peças e pagamentos; Customer e Mechanic herdam de Person; Bicycle mantém seu ServiceHistory; PartStock controla o estoque, gera Part e referencia Supplier.</desc>
+        <metadata id="diagram-studio-model" data-editor="https://github.com/FernandoHaeser/diagram-studio">{"id": "ed404352f9", "type": "class", "name": "Oficina de Bicicletas", "nodes": [{"id": "92b47d26d7", "kind": "class", "x": 340, "y": 80, "label": "Person", "flags": {"abstract": true}, "members": [{"id": "d5775c0b2c", "text": "name", "visibility": "-", "type": "String"}, {"id": "bd13f6d23e", "text": "phone", "visibility": "-", "type": "String"}], "methods": []}, {"id": "4853384b3b", "kind": "class", "x": 60, "y": 80, "label": "Customer", "flags": {}, "members": [{"id": "b234101301", "text": "cpf", "visibility": "-", "type": "String"}, {"id": "32177436cb", "text": "address", "visibility": "-", "type": "String"}], "methods": []}, {"id": "aaf85f219a", "kind": "class", "x": 640, "y": 80, "label": "Mechanic", "flags": {}, "members": [{"id": "4e29a5b0e1", "text": "badge", "visibility": "-", "type": "String"}, {"id": "b77f41af03", "text": "salary", "visibility": "-", "type": "double"}], "methods": []}, {"id": "65a7d5359d", "kind": "class", "x": 60, "y": 304, "label": "Bicycle", "flags": {}, "members": [{"id": "683706fb52", "text": "brand", "visibility": "-", "type": "String"}, {"id": "5c1bd3e208", "text": "model", "visibility": "-", "type": "String"}, {"id": "54f4732510", "text": "color", "visibility": "-", "type": "String"}, {"id": "4ec1945a0e", "text": "year", "visibility": "-", "type": "int"}], "methods": []}, {"id": "3afdc6a0b4", "kind": "class", "x": 340, "y": 304, "label": "ServiceHistory", "flags": {}, "members": [], "methods": [{"id": "9ad3276e8d", "text": "addServiceOrder(order)", "visibility": "+"}, {"id": "9f1f888a0b", "text": "getLastMechanic()", "visibility": "+", "type": "Mechanic"}]}, {"id": "a3e6535277", "kind": "class", "x": 60, "y": 672, "label": "Appointment", "flags": {}, "members": [{"id": "16898a6119", "text": "scheduledAt", "visibility": "-", "type": "LocalDateTime"}, {"id": "f2c94402fc", "text": "notes", "visibility": "-", "type": "String"}], "methods": []}, {"id": "7aaf807bfb", "kind": "enum", "x": 340, "y": 672, "label": "AppointmentType", "flags": {}, "members": [{"id": "e63b82db56", "text": "DROP_OFF"}, {"id": "2abb54e905", "text": "PICKUP"}], "methods": []}, {"id": "1a38a014b5", "kind": "class", "x": 640, "y": 304, "label": "ServiceOrder", "flags": {"focal": true}, "members": [{"id": "f1e0810b18", "text": "number", "visibility": "-", "type": "int"}, {"id": "56c84a6ab4", "text": "description", "visibility": "-", "type": "String"}, {"id": "8273cf515d", "text": "openingDate", "visibility": "-", "type": "LocalDate"}, {"id": "18e27941b4", "text": "estimatedDeliveryDate", "visibility": "-", "type": "LocalDate"}], "methods": [{"id": "21dc3931ce", "text": "addService(service)", "visibility": "+"}, {"id": "b303fa6ee4", "text": "addPart(part)", "visibility": "+"}, {"id": "086b5b4390", "text": "addPayment(payment)", "visibility": "+"}, {"id": "8d81498aa8", "text": "calculateTotal()", "visibility": "+", "type": "double"}, {"id": "ca8c928789", "text": "getRemainingBalance()", "visibility": "+", "type": "double"}]}, {"id": "0c8208896d", "kind": "interface", "x": 1000, "y": 304, "label": "Calculable", "flags": {}, "members": [], "methods": [{"id": "08378bd209", "text": "calculateTotal()", "visibility": "+", "type": "double"}]}, {"id": "65e73bd29c", "kind": "enum", "x": 1000, "y": 432, "label": "ServiceStatus", "flags": {}, "members": [{"id": "86034ca64f", "text": "OPEN"}, {"id": "dcaa67e195", "text": "IN_PROGRESS"}, {"id": "df4c58f7c7", "text": "WAITING_FOR_PART"}, {"id": "82d3979d2c", "text": "COMPLETED"}, {"id": "4a6522bccc", "text": "… +2 estados"}], "methods": []}, {"id": "51c928239f", "kind": "class", "x": 640, "y": 672, "label": "Service", "flags": {}, "members": [{"id": "63a3aeeadc", "text": "description", "visibility": "-", "type": "String"}, {"id": "621cd4d590", "text": "laborCost", "visibility": "-", "type": "double"}], "methods": []}, {"id": "cd0f094959", "kind": "class", "x": 1000, "y": 672, "label": "Payment", "flags": {}, "members": [{"id": "c8d368cd6a", "text": "amount", "visibility": "-", "type": "double"}, {"id": "70e0b5af3d", "text": "paymentDate", "visibility": "-", "type": "LocalDate"}], "methods": []}, {"id": "0e2dc4e5f2", "kind": "enum", "x": 1000, "y": 840, "label": "PaymentMethod", "flags": {}, "members": [{"id": "de18aa4f67", "text": "CASH"}, {"id": "37ddc9fcbe", "text": "PIX"}, {"id": "8af1a6892e", "text": "DEBIT_CARD"}, {"id": "35c598c17f", "text": "CREDIT_CARD"}], "methods": []}, {"id": "538d9e8bb7", "kind": "class", "x": 1300, "y": 80, "label": "Supplier", "flags": {}, "members": [{"id": "50d41a2ada", "text": "name", "visibility": "-", "type": "String"}, {"id": "463aed5ae6", "text": "cnpj", "visibility": "-", "type": "String"}, {"id": "d3ed51bfc9", "text": "phone", "visibility": "-", "type": "String"}, {"id": "88b2509987", "text": "email", "visibility": "-", "type": "String"}], "methods": []}, {"id": "4bc62067ed", "kind": "class", "x": 1300, "y": 304, "label": "PartStock", "flags": {}, "members": [{"id": "3071e63b10", "text": "description", "visibility": "-", "type": "String"}, {"id": "645782720d", "text": "unitPrice", "visibility": "-", "type": "double"}, {"id": "78f0306496", "text": "availableQuantity", "visibility": "-", "type": "int"}], "methods": [{"id": "8f60cbe413", "text": "addStock(quantity: int)", "visibility": "+"}, {"id": "82d679a85b", "text": "withdraw(quantity: int)", "visibility": "+", "type": "Part"}]}, {"id": "99cb1ab7c9", "kind": "class", "x": 1300, "y": 672, "label": "Part", "flags": {}, "members": [{"id": "77cc36da4a", "text": "description", "visibility": "-", "type": "String"}, {"id": "593cdafbf9", "text": "unitPrice", "visibility": "-", "type": "double"}, {"id": "e0ccde38b6", "text": "quantity", "visibility": "-", "type": "int"}], "methods": []}], "edges": [{"id": "d6beca680b", "kind": "inheritance", "from": "4853384b3b", "to": "92b47d26d7"}, {"id": "b8a32b9979", "kind": "inheritance", "from": "aaf85f219a", "to": "92b47d26d7"}, {"id": "d4d6006330", "kind": "directed", "from": "65a7d5359d", "to": "4853384b3b", "fromCard": "0..*", "toCard": "1"}, {"id": "9b095cfda3", "kind": "directed", "from": "1a38a014b5", "to": "aaf85f219a", "fromCard": "0..*", "toCard": "1"}, {"id": "cc46d46f53", "kind": "composition", "from": "65a7d5359d", "to": "3afdc6a0b4", "fromCard": "1", "toCard": "1"}, {"id": "dbf075cc52", "kind": "aggregation", "from": "3afdc6a0b4", "to": "1a38a014b5", "fromCard": "1", "toCard": "0..*"}, {"id": "3a602f14c4", "kind": "directed", "from": "a3e6535277", "to": "65a7d5359d", "fromCard": "0..*", "toCard": "1"}, {"id": "94d19320f5", "kind": "directed", "from": "1a38a014b5", "to": "65a7d5359d", "fromCard": "0..*", "toCard": "1"}, {"id": "a2a78264bf", "kind": "realization", "from": "1a38a014b5", "to": "0c8208896d"}, {"id": "f972e00cc6", "kind": "directed", "from": "1a38a014b5", "to": "65e73bd29c", "fromCard": "0..*", "toCard": "1"}, {"id": "9ffc912dba", "kind": "composition", "from": "1a38a014b5", "to": "51c928239f", "fromCard": "1", "toCard": "1..*"}, {"id": "13efc5dcd0", "kind": "composition", "from": "1a38a014b5", "to": "cd0f094959", "fromCard": "1", "toCard": "0..*"}, {"id": "f8bd21fdb7", "kind": "composition", "from": "1a38a014b5", "to": "99cb1ab7c9", "fromCard": "1", "toCard": "0..*"}, {"id": "2fe4d30dc5", "kind": "directed", "from": "cd0f094959", "to": "0e2dc4e5f2", "fromCard": "0..*", "toCard": "1"}, {"id": "a33e10da62", "kind": "dependency", "from": "4bc62067ed", "to": "99cb1ab7c9", "label": "gera"}, {"id": "0b4803aa9a", "kind": "directed", "from": "4bc62067ed", "to": "538d9e8bb7", "fromCard": "0..*", "toCard": "0..1"}, {"id": "97cf71495a", "kind": "directed", "from": "a3e6535277", "to": "7aaf807bfb", "fromCard": "0..*", "toCard": "1"}], "meta": {"eyebrow": "DIAGRAMA UML · CLASSES", "title": "Oficina de Bicicletas · diagrama de classes", "subtitle": "Modelo de domínio: pessoas, atendimento, ordem de serviço e estoque", "header": true, "legend": true}, "createdAt": 1794799520879, "updatedAt": 1794799520879}</metadata>
+        <defs>
+      <style>@import url('https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&amp;family=Geist:wght@400;500;600&amp;family=Geist+Mono:wght@400;500;600&amp;family=Noto+Serif:ital@0;1&amp;family=Noto+Sans+KR:wght@400;500;600&amp;family=Noto+Serif+KR:wght@400&amp;family=Noto+Sans+TC:wght@400;500;600&amp;family=Noto+Serif+TC:wght@400&amp;display=swap');
+      #class-diagram-root { --color-paper:   #f5f5f5;
+      --color-ink:     #2d3142;
+      --color-muted:   #4f5d75;
+      --color-accent:  #bf4520;
+      --font-sans:     'Geist', system-ui, sans-serif;
+      --font-serif:    'Instrument Serif', serif;
+      --font-mono:     'Geist Mono', ui-monospace, monospace; }
+      #class-diagram-root { font-family: var(--font-sans); color: var(--color-ink); }
+      #class-diagram-root .diagram-container { width: 100%; overflow-x: auto; }
+      @media print {
+#class-diagram-root .diagram-container { overflow-x: visible; }
+}</style>
+          <marker id="class-diagram-uml-triangle" markerWidth="16" markerHeight="12" refX="15" refY="6" orient="auto" markerUnits="userSpaceOnUse">
+            <polygon points="0 0, 16 6, 0 12" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+          </marker>
+          <marker id="class-diagram-uml-diamond-filled" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <polygon points="0 5, 9 0, 18 5, 9 10" fill="#2d3142"/>
+          </marker>
+          <marker id="class-diagram-uml-diamond-hollow" markerWidth="18" markerHeight="10" refX="0" refY="5" orient="auto" markerUnits="userSpaceOnUse">
+            <polygon points="0 5, 9 0, 18 5, 9 10" fill="#f5f5f5" stroke="#2d3142" stroke-width="1"/>
+          </marker>
+          <marker id="class-diagram-uml-open" markerWidth="10" markerHeight="8" refX="9" refY="4" orient="auto" markerUnits="userSpaceOnUse">
+            <path d="M0,0 L9,4 L0,8" fill="none" stroke="#4f5d75" stroke-width="1"/>
+          </marker>
+        </defs>
+
+        <rect width="100%" height="100%" fill="#f5f5f5"/>
+
+        <!-- Zones (painted first) -->
+      <rect x="40" y="40" width="840" height="136" rx="6" fill="#ececec" stroke="#2d3142" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="52" y="60" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.18em">PESSOAS</text>
+      <rect x="40" y="208" width="540" height="452" rx="6" fill="#ececec" stroke="#2d3142" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="52" y="228" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.18em">ATENDIMENTO</text>
+      <rect x="620" y="208" width="620" height="612" rx="6" fill="#ececec" stroke="#2d3142" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="632" y="228" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.18em">ORDEM DE SERVIÇO</text>
+      <rect x="1280" y="40" width="260" height="628" rx="6" fill="#ececec" stroke="#2d3142" stroke-width="1" stroke-opacity="0.12"/>
+      <text x="1292" y="60" fill="#5a6580" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.18em">ESTOQUE</text>
+
+      <!-- Relationships (drawn before boxes) -->
+      <path d="M 280,116 H 340" fill="none" stroke-width="1" stroke="#2d3142" marker-end="url(#class-diagram-uml-triangle)"/>
+      <path d="M 640,116 H 560" fill="none" stroke-width="1" stroke="#2d3142" marker-end="url(#class-diagram-uml-triangle)"/>
+      <path d="M 170,244 V 156" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 750,244 V 156" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 280,284 H 340" fill="none" stroke-width="1" stroke="#2d3142" marker-start="url(#class-diagram-uml-diamond-filled)"/>
+      <path d="M 560,284 H 640" fill="none" stroke-width="1" stroke="#2d3142" marker-start="url(#class-diagram-uml-diamond-hollow)"/>
+      <path d="M 132,552 V 356" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 700,448 V 488 Q 700,496 692,496 H 216 Q 208,496 208,488 V 356" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 940,280 H 1000" fill="none" stroke-width="1" stroke="#2d3142" stroke-dasharray="5,4" marker-end="url(#class-diagram-uml-triangle)"/>
+      <path d="M 940,424 H 1000" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 760,448 V 552" fill="none" stroke-width="1" stroke="#2d3142" marker-start="url(#class-diagram-uml-diamond-filled)"/>
+      <path d="M 820,448 V 584 Q 820,592 828,592 H 1000" fill="none" stroke-width="1" stroke="#2d3142" marker-start="url(#class-diagram-uml-diamond-filled)"/>
+      <path d="M 880,448 V 512 Q 880,520 888,520 H 1364 Q 1372,520 1372,528 V 552" fill="none" stroke-width="1" stroke="#2d3142" marker-start="url(#class-diagram-uml-diamond-filled)"/>
+      <path d="M 1110,632 V 680" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 1448,384 V 552" fill="none" stroke-width="1" stroke="#4f5d75" stroke-dasharray="4,3" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 1410,244 V 188" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <path d="M 280,592 H 340" fill="none" stroke-width="1" stroke="#4f5d75" marker-end="url(#class-diagram-uml-open)"/>
+      <!-- Multiplicities -->
+      <rect x="176" y="222" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="188" y="231" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="176" y="164" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="182" y="173" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="756" y="222" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="768" y="231" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="756" y="164" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="762" y="173" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="290" y="266" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="296" y="275" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="320" y="266" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="326" y="275" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="570" y="266" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="576" y="275" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="606" y="266" width="24" height="12" rx="2" fill="#f5f5f5"/>
+      <text x="618" y="275" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="138" y="530" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="150" y="539" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="138" y="366" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="144" y="375" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="706" y="458" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="718" y="467" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="214" y="366" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="220" y="375" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="950" y="406" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="962" y="415" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="980" y="406" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="986" y="415" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="766" y="470" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="772" y="479" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="766" y="530" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="778" y="539" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1..*</text>
+      <rect x="826" y="470" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="832" y="479" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="966" y="574" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="978" y="583" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="886" y="470" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="892" y="479" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="1330" y="502" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="1342" y="511" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="1116" y="640" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="1128" y="649" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="1116" y="658" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="1122" y="667" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <rect x="1416" y="222" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="1428" y="231" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="1416" y="196" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="1428" y="205" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..1</text>
+      <rect x="290" y="574" width="24" height="12" rx="2" fill="#ececec"/>
+      <text x="302" y="583" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">0..*</text>
+      <rect x="320" y="574" width="12" height="12" rx="2" fill="#ececec"/>
+      <text x="326" y="583" fill="#2d3142" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" font-weight="600">1</text>
+      <!-- Dependency label -->
+      <rect x="1454" y="460" width="32" height="12" rx="2" fill="#ececec"/>
+      <text x="1470" y="469" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.06em">GERA</text>
+      <!-- Class: Person -->
+      <rect x="340" y="76" width="220" height="80" rx="6" fill="#f5f5f5"/>
+      <rect x="340" y="76" width="220" height="80" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="450" y="99" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle" font-style="italic">Person</text>
+      <line x1="340" y1="112" x2="560" y2="112" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="356" y="130" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- name: String</text>
+      <text x="356" y="146" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- phone: String</text>
+      <!-- Class: Customer -->
+      <rect x="60" y="76" width="220" height="80" rx="6" fill="#f5f5f5"/>
+      <rect x="60" y="76" width="220" height="80" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="170" y="99" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Customer</text>
+      <line x1="60" y1="112" x2="280" y2="112" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="76" y="130" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- cpf: String</text>
+      <text x="76" y="146" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- address: String</text>
+      <!-- Class: Mechanic -->
+      <rect x="640" y="76" width="220" height="80" rx="6" fill="#f5f5f5"/>
+      <rect x="640" y="76" width="220" height="80" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="750" y="99" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Mechanic</text>
+      <line x1="640" y1="112" x2="860" y2="112" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="656" y="130" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- badge: String</text>
+      <text x="656" y="146" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- salary: double</text>
+      <!-- Class: Bicycle -->
+      <rect x="60" y="244" width="220" height="112" rx="6" fill="#f5f5f5"/>
+      <rect x="60" y="244" width="220" height="112" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="170" y="267" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Bicycle</text>
+      <line x1="60" y1="280" x2="280" y2="280" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="76" y="298" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- brand: String</text>
+      <text x="76" y="314" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- model: String</text>
+      <text x="76" y="330" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- color: String</text>
+      <text x="76" y="346" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- year: int</text>
+      <!-- Class: ServiceHistory -->
+      <rect x="340" y="244" width="220" height="80" rx="6" fill="#f5f5f5"/>
+      <rect x="340" y="244" width="220" height="80" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="450" y="267" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">ServiceHistory</text>
+      <line x1="340" y1="280" x2="560" y2="280" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="356" y="298" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ addServiceOrder(order)</text>
+      <text x="356" y="314" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ getLastMechanic(): Mechanic</text>
+      <!-- Class: Appointment -->
+      <rect x="60" y="552" width="220" height="80" rx="6" fill="#f5f5f5"/>
+      <rect x="60" y="552" width="220" height="80" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="170" y="575" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Appointment</text>
+      <line x1="60" y1="588" x2="280" y2="588" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="76" y="606" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- scheduledAt: LocalDateTime</text>
+      <text x="76" y="622" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- notes: String</text>
+      <!-- Class: AppointmentType -->
+      <rect x="340" y="552" width="220" height="88" rx="6" fill="#f5f5f5"/>
+      <rect x="340" y="552" width="220" height="88" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="450" y="568" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">«enumeration»</text>
+      <text x="450" y="585" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">AppointmentType</text>
+      <line x1="340" y1="596" x2="560" y2="596" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="356" y="614" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">DROP_OFF</text>
+      <text x="356" y="630" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">PICKUP</text>
+      <!-- Class: ServiceOrder -->
+      <rect x="640" y="244" width="300" height="204" rx="6" fill="#f5f5f5"/>
+      <rect x="640" y="244" width="300" height="204" rx="6" fill="#bf4520" stroke="#bf4520" stroke-width="1" fill-opacity="0.04"/>
+      <rect x="640" y="244" width="300" height="36" rx="6" fill="#bf4520" fill-opacity="0.10"/>
+      <rect x="640" y="272" width="300" height="8" fill="#bf4520" fill-opacity="0.10"/>
+      <text x="790" y="267" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">ServiceOrder</text>
+      <line x1="640" y1="280" x2="940" y2="280" stroke="#bf4520" stroke-width="1" stroke-opacity="0.40"/>
+      <text x="656" y="298" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- number: int</text>
+      <text x="656" y="314" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- description: String</text>
+      <text x="656" y="330" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- openingDate: LocalDate</text>
+      <text x="656" y="346" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- estimatedDeliveryDate: LocalDate</text>
+      <line x1="640" y1="356" x2="940" y2="356" stroke="#bf4520" stroke-width="1" stroke-opacity="0.40"/>
+      <text x="656" y="374" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ addService(service)</text>
+      <text x="656" y="390" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ addPart(part)</text>
+      <text x="656" y="406" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ addPayment(payment)</text>
+      <text x="656" y="422" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ calculateTotal(): double</text>
+      <text x="656" y="438" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ getRemainingBalance(): double</text>
+      <!-- Class: Calculable -->
+      <rect x="1000" y="244" width="220" height="72" rx="6" fill="#f5f5f5"/>
+      <rect x="1000" y="244" width="220" height="72" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="1110" y="260" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">«interface»</text>
+      <text x="1110" y="277" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Calculable</text>
+      <line x1="1000" y1="288" x2="1220" y2="288" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1016" y="306" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ calculateTotal(): double</text>
+      <!-- Class: ServiceStatus -->
+      <rect x="1000" y="356" width="220" height="136" rx="6" fill="#f5f5f5"/>
+      <rect x="1000" y="356" width="220" height="136" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="1110" y="372" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">«enumeration»</text>
+      <text x="1110" y="389" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">ServiceStatus</text>
+      <line x1="1000" y1="400" x2="1220" y2="400" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1016" y="418" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">OPEN</text>
+      <text x="1016" y="434" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">IN_PROGRESS</text>
+      <text x="1016" y="450" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">WAITING_FOR_PART</text>
+      <text x="1016" y="466" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">COMPLETED</text>
+      <text x="1016" y="482" fill="#5a6580" font-size="9" font-family="'Geist Mono', monospace">… +2 estados</text>
+      <!-- Class: Service -->
+      <rect x="640" y="552" width="160" height="80" rx="6" fill="#f5f5f5"/>
+      <rect x="640" y="552" width="160" height="80" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="720" y="575" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Service</text>
+      <line x1="640" y1="588" x2="800" y2="588" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="656" y="606" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- description: String</text>
+      <text x="656" y="622" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- laborCost: double</text>
+      <!-- Class: Payment -->
+      <rect x="1000" y="552" width="220" height="80" rx="6" fill="#f5f5f5"/>
+      <rect x="1000" y="552" width="220" height="80" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="1110" y="575" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Payment</text>
+      <line x1="1000" y1="588" x2="1220" y2="588" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1016" y="606" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- amount: double</text>
+      <text x="1016" y="622" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- paymentDate: LocalDate</text>
+      <!-- Class: PaymentMethod -->
+      <rect x="1000" y="680" width="220" height="120" rx="6" fill="#f5f5f5"/>
+      <rect x="1000" y="680" width="220" height="120" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="1110" y="696" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" text-anchor="middle" letter-spacing="0.08em">«enumeration»</text>
+      <text x="1110" y="713" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">PaymentMethod</text>
+      <line x1="1000" y1="724" x2="1220" y2="724" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1016" y="742" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">CASH</text>
+      <text x="1016" y="758" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">PIX</text>
+      <text x="1016" y="774" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">DEBIT_CARD</text>
+      <text x="1016" y="790" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">CREDIT_CARD</text>
+      <!-- Class: Supplier -->
+      <rect x="1300" y="76" width="220" height="112" rx="6" fill="#f5f5f5"/>
+      <rect x="1300" y="76" width="220" height="112" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="1410" y="99" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Supplier</text>
+      <line x1="1300" y1="112" x2="1520" y2="112" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1316" y="130" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- name: String</text>
+      <text x="1316" y="146" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- cnpj: String</text>
+      <text x="1316" y="162" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- phone: String</text>
+      <text x="1316" y="178" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- email: String</text>
+      <!-- Class: PartStock -->
+      <rect x="1300" y="244" width="220" height="140" rx="6" fill="#f5f5f5"/>
+      <rect x="1300" y="244" width="220" height="140" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="1410" y="267" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">PartStock</text>
+      <line x1="1300" y1="280" x2="1520" y2="280" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1316" y="298" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- description: String</text>
+      <text x="1316" y="314" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- unitPrice: double</text>
+      <text x="1316" y="330" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- availableQuantity: int</text>
+      <line x1="1300" y1="340" x2="1520" y2="340" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1316" y="358" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ addStock(quantity: int)</text>
+      <text x="1316" y="374" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">+ withdraw(quantity: int): Part</text>
+      <!-- Class: Part -->
+      <rect x="1300" y="552" width="220" height="96" rx="6" fill="#f5f5f5"/>
+      <rect x="1300" y="552" width="220" height="96" rx="6" fill="#ffffff" stroke="#2d3142" stroke-width="1"/>
+      <text x="1410" y="575" fill="#2d3142" font-size="12" font-weight="600" font-family="'Geist', sans-serif" text-anchor="middle">Part</text>
+      <line x1="1300" y1="588" x2="1520" y2="588" stroke="#2d3142" stroke-width="1" stroke-opacity="0.22"/>
+      <text x="1316" y="606" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- description: String</text>
+      <text x="1316" y="622" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- unitPrice: double</text>
+      <text x="1316" y="638" fill="#2d3142" font-size="9" font-family="'Geist Mono', monospace">- quantity: int</text>
+
+        <!-- Legend -->
+      <line x1="40" y1="852" x2="1540" y2="852" stroke="#2d3142" stroke-width="0.8" stroke-opacity="0.10"/>
+      <text x="40" y="868" fill="#4f5d75" font-size="8" font-family="'Geist Mono', monospace" letter-spacing="0.18em">LEGENDA · RELAÇÕES</text>
+      <line x1="40" y1="888" x2="68" y2="888" stroke="#2d3142" stroke-width="1" marker-end="url(#class-diagram-uml-triangle)"/>
+      <text x="76" y="892" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Herança</text>
+      <line x1="208" y1="888" x2="236" y2="888" stroke="#2d3142" stroke-width="1" stroke-dasharray="5,4" marker-end="url(#class-diagram-uml-triangle)"/>
+      <text x="244" y="892" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Realização</text>
+      <line x1="376" y1="888" x2="404" y2="888" stroke="#2d3142" stroke-width="1" marker-start="url(#class-diagram-uml-diamond-filled)"/>
+      <text x="412" y="892" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Composição · contém</text>
+      <line x1="544" y1="888" x2="572" y2="888" stroke="#2d3142" stroke-width="1" marker-start="url(#class-diagram-uml-diamond-hollow)"/>
+      <text x="580" y="892" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Agregação · tem</text>
+      <line x1="712" y1="888" x2="740" y2="888" stroke="#4f5d75" stroke-width="1" marker-end="url(#class-diagram-uml-open)"/>
+      <text x="748" y="892" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Associação</text>
+      <line x1="880" y1="888" x2="908" y2="888" stroke="#4f5d75" stroke-width="1" stroke-dasharray="4,3" marker-end="url(#class-diagram-uml-open)"/>
+      <text x="916" y="892" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Dependência · usa</text>
+      <rect x="1056" y="882" width="20" height="12" rx="2" fill="#bf4520" stroke="#bf4520" stroke-width="1" fill-opacity="0.10"/>
+      <text x="1084" y="892" fill="#4f5d75" font-size="8.5" font-family="'Geist', sans-serif">Agregado central</text>
+      </svg>
