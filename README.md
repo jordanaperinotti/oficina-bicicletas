@@ -31,7 +31,7 @@ Aplicação Java inicial para cadastro de clientes, mecânicos e bicicletas, bem
 - `PartStock` controla o estoque de cada peça (quantidade disponível, preço e `Supplier`). A baixa (`withdraw`) valida o saldo e devolve um `Part` pronto para ser adicionado à ordem.
 - `Supplier` guarda os dados dos fornecedores de peças.
 - `Payment` registra valor, data e forma de pagamento (`PaymentMethod`). A ordem rejeita pagamentos que excedam o saldo restante.
-- `Appointment` registra agendamentos de entrada ou retirada (`AppointmentType`) de uma bicicleta.
+- `Appointment` registra a data e as observações de um agendamento relacionado a uma bicicleta.
 - `ServiceHistory` mantém o histórico de ordens de uma bicicleta e informa o último mecânico que a atendeu.
 - `Calculable` é implementada por `ServiceOrder`, que calcula a mão de obra dos serviços mais o valor das peças.
 - `Model` será extraída em uma próxima etapa. Por enquanto, a bicicleta guarda marca e modelo como textos.
